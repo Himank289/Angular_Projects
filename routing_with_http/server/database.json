@@ -1,15 +1,14 @@
 {
   "books": [
     {
-      "bkname": "CoreJava",
-      "bkprice": 5000,
-      "id": 1
+      "id": 1,
+      "bkname": "Learn Anugular",
+      "bkprice": 700
     },
     {
-      
-      "bkname": "Angular",
-      "bkprice": 6000,
-      "id": 2
+      "id": 2,
+      "bkname": "Learn OOPS",
+      "bkprice": "200"
     }
   ]
 }

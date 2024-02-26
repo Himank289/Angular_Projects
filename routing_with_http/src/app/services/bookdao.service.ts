@@ -5,7 +5,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable } from 'rxjs';
 
 import {  throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, filter, map } from 'rxjs/operators';
 import { Book } from '../model/Book.';
 
 @Injectable({
@@ -38,6 +38,7 @@ export class BookdaoService {
     .pipe(
       catchError(this.errorHandler)
     )
+    // .pipe(filter(book=>book.bkprice>200))
   }
 
   getAll(): Observable<Book[]> {
@@ -56,12 +57,14 @@ export class BookdaoService {
   }
 
   delete(id:number){
+    console.log(id);
     return this.httpClient.delete<Book>(this.apiServer + '/books/' + id, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
   errorHandler(error:HttpErrorResponse) {
+
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
       // Get client-side error
@@ -70,7 +73,7 @@ export class BookdaoService {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    console.log(errorMessage);
+    console.log("eroor messge inside error handler"+errorMessage);
     return throwError(() => error);
  }
    
