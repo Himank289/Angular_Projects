@@ -14,6 +14,7 @@ import { Observable, of } from 'rxjs';
 export class AppComponent {
   title = 'ang_ex8_pipes';
   x=100;
+  today: number = Date.now();
   y: Promise<string> | null = Promise.resolve("hello world");
   z: Observable<string> | null = of("hello world");
   //bookarr:Observable<Book[]> | null = this.httpser.get();

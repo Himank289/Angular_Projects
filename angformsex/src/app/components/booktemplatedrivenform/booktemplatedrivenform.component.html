@@ -1,0 +1,87 @@
+<p>booktemplatedrivenform works!</p>
+<!-- https://www.tektutorialshub.com/angular/template-driven-form-validation-in-angular/ -->
+<form (ngSubmit)="onSubmit(bookForm.form)" #bookForm=ngForm novalidate>
+ 
+   <div class="form-group">
+    <label for="id">
+        Bookid:    
+       <input type="text"
+        class="form-control"
+        [(ngModel)]="book.id"
+         name="id"
+         required
+         id="id"
+         #id="ngModel"/>
+     </label>
+     
+     <div [hidden]="id.valid||id.pristine"
+                class="alert alert-danger">
+               id cannot be empty.
+     </div>
+  </div>
+ 
+  <div class="form-group">
+    <label for="bkname">
+        Book Name:    
+       <input type="text"
+        class="form-control"
+        [(ngModel)]="book.bkname"
+         name="bkname"
+         minlength="4"
+         required
+         pattern="^[a-zA-Z]*$"
+         id="bkname"
+         #bkname="ngModel"/>
+     </label>
+     
+     <div [hidden]="bkname.valid||bkname.pristine"
+                class="alert alert-danger">
+               bookname is invalid!
+              <div *ngIf="bkname.errors?.['required']">
+                Book Name is required
+             </div>
+             <div *ngIf="bkname.errors?.['minlength']">
+                Book Name Minimum Length not met {{bkname.errors?.['minlength']|json}}
+             </div>
+             <div *ngIf="bkname.errors?.['pattern']">
+                Book Name pattern not met <br> {{bkname.errors?.['pattern']|json}}
+             </div>
+     </div>
+ </div>
+ 
+  <div class="form-group">
+    <label for="bkprice">
+        Book Price:    
+       <input type="text"
+        class="form-control"
+        [(ngModel)]="book.bkprice"
+        name="bkprice"
+         required
+        id="bkprice"
+        #bkprice="ngModel"/>
+     </label>
+     
+     <div [hidden]="bkprice.valid||bkprice.pristine"
+                class="alert alert-danger">
+               book price cannot be empty.
+     </div>
+   
+  </div>
+  <br>
+  <div class="form-group">
+    <input type="submit"
+     class="btn btn-success"
+     [disabled]="!bookForm.form.valid"
+     value="Add Book"/>
+  </div>
+ 
+</form>
+<hr>
+
+<p>bkprice value flag {{bkprice.value}}</p>
+<p>bkprice valid flag {{bkprice.valid}}</p>
+<p>bkprice pristine flag{{bkprice.pristine}}</p>
+<p>bk price dirty flag {{bkprice.dirty}}</p>
+
+<p>form validity:{{bookForm.form.valid}}</p>
+<p>form value:{{bookForm.form.value|json}}</p>
