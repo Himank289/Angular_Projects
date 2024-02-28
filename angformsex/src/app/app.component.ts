@@ -1,22 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatMenuModule} from '@angular/material/menu';
+import { BooktemplatedrivenformComponent } from './components/booktemplatedrivenform/booktemplatedrivenform.component';
+import { CommonModule } from '@angular/common';
+import { EmpReactiveComponent } from './components/emp-reactive/emp-reactive.component';
+import { BookreactiveformeComponent } from './components/bookreactiveforme/bookreactiveforme.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,MatButtonModule, MatDividerModule, MatIconModule,
-    MatFormFieldModule, MatInputModule, MatSelectModule,
-     MatMenuModule],
+  imports: [RouterOutlet,BooktemplatedrivenformComponent,CommonModule,EmpReactiveComponent,BookreactiveformeComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ang_material_demo1';
+  title = 'angformsex';
 }

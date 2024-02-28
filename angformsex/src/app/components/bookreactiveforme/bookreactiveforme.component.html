@@ -1,1 +1,35 @@
-<p>bookreactiveforme works!</p>
+<h4>Book Detail - Reactive Form!</h4>
+<form [formGroup]="bookForm" novalidate >
+    <div class="form-group">
+      <label class="center-block">Bookid:
+        <input class="form-control" formControlName="bookid">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="center-block">BookName:
+        <input class="form-control" formControlName="bookname">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="center-block">BookPrice:
+        <input class="form-control" formControlName="bookprice">
+      </label>
+    </div>
+
+     <button [disabled]='bookForm.status!="VALID"' (click)="mysubmit()">Add Book</button>
+    <div [hidden]="bookForm.status=='VALID'" 
+         class="alert alert-danger">
+          FORM IS INVALID!
+     </div>
+     <div [hidden]="bookForm.get('bookname')?.status=='VALID'" 
+         class="alert alert-danger">
+          FORMFIELD bookname IS INVALID, minlength is 5 and maxlength is 15!
+     </div>
+  </form>
+
+  
+<p>Form status: {{ bookForm.status | json }}</p>
+<p>Form value: {{ bookForm.value | json }}</p>
+
+
+<p>Name value: {{ bookForm.get('bookname')?.value }}</p>
